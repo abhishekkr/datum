@@ -1,26 +1,25 @@
 #!/usr/bin/env bash
 
 Extract_Data_Meta(){
-  wrong_params "$#" "2" "SYNTAX: Extract_Data_Body <SOURCE> <DESTINATION>"
+  wrong_params "$#" "2" "SYNTAX: Extract_Data_Meta <SOURCE> <DESTINATION>"
   _datum_src=$1
   _datum_dst=$2
 
-  cat $_datum_src | grep '^```meta\-.*```$' | tee $_datum_dst
+  cat $_datum_src | grep '^```meta\-.*```$' | sed 's/```//g' > $_datum_dst
 }
 
 Extract_Data_Body(){
   echo "body: "$@
-  if_not_equal "$#" "2"
-      then_run "echo \"Error: Extract_Data_Body needs 2 (SRC, DST) params.\" ; exit 1"
+
+  wrong_params "$#" "2" "SYNTAX: Extract_Data_Body <SOURCE> <DESTINATION>"
   _datum_src=$1
   _datum_dst=$2
 
-  cat $_datum_src | grep -v '^```meta\-.*```$' | tee $_datum_dst
+  cat $_datum_src | grep -v '^```meta\-.*```$' > $_datum_dst
 }
 
 Convert_To_W3Data(){
-  if_not_equal "$#" "2"
-      then_run "echo \"Error: Convert_To_W3Data needs 1 (source) param.\" ; exit 1"
+  wrong_params "$#" "2" "Error: Convert_To_W3Data <Destination-Dir> <Datum-Source-File>"
   _datum_dst_dir=$1
   _datum_src=$2
 
