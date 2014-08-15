@@ -43,7 +43,7 @@ echo "www-data: "$DATUM_W3DATA
 echo ""
 
 mkdir -p $DATUM_W3DATA
-dir_list_run $DATUM_DAT_A "Convert_To_W3Data $DATUM_W3DATA"
+RAGUEL_PARALLEL="true" dir_list_run $DATUM_DAT_A "Convert_To_W3Data $DATUM_W3DATA"
 
 
 Clean.Convert
