@@ -30,9 +30,18 @@ if_not_var $DATUM_W3DATA
         else_run DATUM_W3DATA="${DATUM_BASEDIR}/www-data"
 end_if
 
+if_not_var $DATUM_JSON
+    then_if_var $3
+        then_run DATUM_JSON="$3"
+        else_run DATUM_JSON="${DATUM_W3DATA}/datum.json"
+end_if
+
+DATUM_BLOGSTORE="${DATUM_W3DATA}/blogs"
+
 ########################## func().from
 
 try_source $THIS_DIR/datum-lib/convert.sh
+try_source $THIS_DIR/datum-lib/list.sh
 
 ########################## main()
 
@@ -42,8 +51,9 @@ echo "dat-a:    "$DATUM_DAT_A
 echo "www-data: "$DATUM_W3DATA
 echo ""
 
-mkdir -p $DATUM_W3DATA
-RAGUEL_PARALLEL="true" dir_list_run $DATUM_DAT_A "Convert_To_W3Data $DATUM_W3DATA"
-
+mkdir -p $DATUM_BLOGSTORE
+#RAGUEL_PARALLEL="true" dir_list_run "${DATUM_DAT_A}" "Convert_To_W3Data '${DATUM_BLOGSTORE}'"
+dir_list_run "${DATUM_DAT_A}" "Convert_To_W3Data '${DATUM_BLOGSTORE}'"
+Create_Datum_JSON "${DATUM_JSON}" "${DATUM_BLOGSTORE}"
 
 Clean.Convert
