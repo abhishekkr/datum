@@ -9,8 +9,6 @@ Extract_Data_Meta(){
 }
 
 Extract_Data_Body(){
-  echo "body: "$@
-
   wrong_params "$#" "2" "SYNTAX: Extract_Data_Body <SOURCE> <DESTINATION>"
   _datum_src=$1
   _datum_dst=$2
