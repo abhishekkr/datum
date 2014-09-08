@@ -30,6 +30,10 @@ if_not_var $DATUM_JSON
     then_run DATUM_JSON="${DATUM_W3DATA}/datum.json"
 end_if
 
+if_not_var $DATUM_CONVERTER
+  then_run DATUM_CONVERTER="github"
+end_if
+
 DATUM_BLOGSTORE="${DATUM_W3DATA}/blogs"
 
 ########################## func().from
@@ -47,7 +51,9 @@ echo ""
 
 mkdir -p $DATUM_BLOGSTORE
 #RAGUEL_PARALLEL="true" dir_list_run "${DATUM_DAT_A}" "Convert_To_W3Data '${DATUM_BLOGSTORE}'"
-dir_list_run "${DATUM_DAT_A}" "Convert_To_W3Data '${DATUM_BLOGSTORE}'"
+
+dir_list_run "${DATUM_DAT_A}" "Convert_To_W3Data '${DATUM_CONVERTER}' '${DATUM_BLOGSTORE}'"
+
 Create_Datum_JSON "${DATUM_JSON}" "${DATUM_BLOGSTORE}"
 
 Clean.Convert
