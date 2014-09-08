@@ -17,3 +17,16 @@ Meaning:
 > a piece of information.
 > 2.
 > a fixed starting point of a scale or operation
+
+---
+
+#### Example
+
+I've attached a very 0-level original example (to be improved later, PR welcomed).
+See the effect, change directory to datum's root... then
+
+* to convert using Github API (requires Internet)
+> DATUM_BASEDIR="example/" ./dat-2-um.sh
+
+* to convert using Pandoc utlity (need to be installed using cabal)
+> DATUM_CONVERTER="pandoc" DATUM_BASEDIR="example/" ./dat-2-um.sh
