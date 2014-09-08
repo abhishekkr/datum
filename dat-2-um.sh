@@ -14,26 +14,20 @@ fi
 ############################ key=val
 
 THIS_DIR="$(dirname $0)"
-if_not_var $DATUM_BASEDIR
+if_not_var "$DATUM_BASEDIR"
     then_run DATUM_BASEDIR="$THIS_DIR"
 end_if
 
-if_not_var $DATUM_DAT_A
-    then_if_var $1
-        then_run DATUM_DAT_A="$1"
-        else_run DATUM_DAT_A="${DATUM_BASEDIR}/dat-a"
+if_not_var "$DATUM_DAT_A"
+    then_run DATUM_DAT_A="${DATUM_BASEDIR}/dat-a"
 end_if
 
 if_not_var $DATUM_W3DATA
-    then_if_var $2
-        then_run DATUM_W3DATA="$2"
-        else_run DATUM_W3DATA="${DATUM_BASEDIR}/www-data"
+    then_run DATUM_W3DATA="${DATUM_BASEDIR}/www-data"
 end_if
 
 if_not_var $DATUM_JSON
-    then_if_var $3
-        then_run DATUM_JSON="$3"
-        else_run DATUM_JSON="${DATUM_W3DATA}/datum.json"
+    then_run DATUM_JSON="${DATUM_W3DATA}/datum.json"
 end_if
 
 DATUM_BLOGSTORE="${DATUM_W3DATA}/blogs"
