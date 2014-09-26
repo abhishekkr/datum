@@ -1,0 +1,94 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>${DatumTitle}</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+
+    <script src="js/vendor/modernizr.js"></script>
+  </head>
+  <body>
+
+    <div>
+
+
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="nav-bar right">
+            <ul class="button-group">
+              <li><a href="#" class="button">home</a></li>
+              <li><a href="#" class="button">@github</a></li>
+              <li><a href="#" class="button">@twitter</a></li>
+              <li><a href="#" class="button">about</a></li>
+            </ul>
+          </div>
+          <h1>${DatumBanner} <small>${DatumSubtitle}</small></h1>
+          <hr/>
+        </div>
+      </div>
+
+      <!-- Blog-HTML LOOP-start -->
+      <div id="blogroll" class="row">
+        <div class="large-9 columns" role="content">
+          <div class="list_div"> <ul class="list"> </ul> </div>
+          <div class="pagination_div"> <span class="pagination"></span> </div>
+        </div>
+
+        <aside class="large-3 columns">
+          <div id="search_sort_banner">
+            <h5>blog search</h5>
+            <span id="search_sort">
+              <input class="search" placeholder="Search" /><br/><br/>
+              <input class="fuzzy-search" placeholder="Fuzzy Search" /><br/><br/>
+              <span>Sort<br/>
+                <button class="sort small" data-sort="blogTitle">by Title</button><br/>
+                <button class="sort small" data-sort="blogTags">by Tags</button><br/>
+              </span>
+            </span>
+          </div>
+          <h5>main blogs</h5>
+          <ul class="side-nav">
+            <li><a href="#">justfewtuts.blogspot.com</a></li>
+            <li><a href="#">hackersmag.blogspot.com</a></li>
+            <li><a href="#">tekwalk.blogspot.com</a></li>
+          </ul>
+
+          <div class="panel">
+            <h5>Latest</h5>
+            <p>${DatumLatestTitleAndTop100Chars}</p>
+            <a href="${DatumLatestLink}">Read More →</a>
+          </div>
+        </aside>
+      </div>
+      <!-- Blog-HTML LOOP-end -->
+
+      <footer class="row">
+        <div class="large-12 columns">
+          <hr/>
+          <div class="row">
+            <div class="large-6 columns">
+              <p>x©x Copyleft</p>
+            </div>
+            <div class="large-6 columns">
+              <ul class="inline-list right">
+                <li><a href="#">abhishekkr.wordpress.com</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script src="js/list.min.js"></script>
+    <script src="js/list.pagination.js"></script>
+    <script src="js/list.fuzzysearch.js"></script>
+    <script src="js/bloglist.js"></script>
+    <script>
+$(document).foundation();
+    </script>
+  </body>
+</html>
