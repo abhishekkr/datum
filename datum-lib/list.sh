@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
+##### responsible to create bloglist json for www-data to use
 
+####### convert YYYY-MM-DD to TimeDiv suited format
 YYYYMMDD_To_TimeDiv(){
   echo "${@}" | awk -F'-' '{print $2"/"$3"/"$1}' | xargs date +%_d" "%b"'"%Y" *"%A -d
 }
 
+####### add blog files to JSON List after tokenizing filename for other fields
 addBlogToList(){
   _json="$1"
   _blog="$2"
@@ -31,6 +34,7 @@ addBlogToList(){
   fi
 }
 
+####### handle blog JSON creation
 Create_Datum_JSON(){
   _datum_json=$1
   _datum_blogstore=$2

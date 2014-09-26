@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
+##### responsible for MD to HTML creations
 
+####### extracts meta-data from MD files to meta files
 Extract_Data_Meta(){
   wrong_params "$#" "2" "SYNTAX: Extract_Data_Meta <SOURCE> <DESTINATION>"
   _datum_src=$1
@@ -8,6 +10,7 @@ Extract_Data_Meta(){
   cat $_datum_src | grep '^```meta\-.*```$' | sed 's/```//g' > $_datum_dst
 }
 
+####### extracts blog data from MD file to be converted later
 Extract_Data_Body(){
   wrong_params "$#" "2" "SYNTAX: Extract_Data_Body <SOURCE> <DESTINATION>"
   _datum_src=$1
@@ -15,6 +18,7 @@ Extract_Data_Body(){
   cat $_datum_src | grep -v '^```meta\-.*```$' > $_datum_dst
 }
 
+####### enables convert a MD blog data file using GitHub API
 Github_MD_To_HTML(){
   wrong_params "$#" "2" "SYNTAX: Github_MD_To_HTML <markdown-filepath> <dest-html-filepath>"
   unset _markdown_filepath
@@ -39,11 +43,13 @@ Github_MD_To_HTML(){
   rm $_github_json_filepath
 }
 
+####### enables conversion of MD blog data by default (GitHub API) mode
 Default_MD_To_HTML(){
   echo "ERROR: Datum Converter \"$DATUM_CONVERTER\" is not supported. Converting using default datum converter \"Github\", requires internet availability."
   Github_MD_To_HTML $1 $2
 }
 
+####### enables conversion of MD blog data by Pandoc (if set DATUM_CONVERTER="pandoc")
 Pandoc_MD_To_HTML(){
   wrong_params "$#" "2" "SYNTAX: Pandoc_MD_To_HTML <markdown-filepath> <dest-html-filepath>"
   unset _markdown_filepath
@@ -59,6 +65,7 @@ Pandoc_MD_To_HTML(){
   echo "Pandoc Converting: ${_markdown_filepath} to ${_html_filepath}"
 }
 
+####### base function calling helper MD to HTML converter based on DATUM_CONVERTER
 Markdown_To_HTML(){
   wrong_params "$#" "2" "SYNTAX: Markdown_To_HTML <markdown-filepath> <dest-html-filepath>"
   unset _markdown_filepath
@@ -75,6 +82,7 @@ Markdown_To_HTML(){
   end_if
 }
 
+####### enables Meta, Blog extraction AND conversion handling
 Convert_To_W3Data(){
   wrong_params "$#" "3" "Error: Convert_To_W3Data <Destination-Dir> <Datum-Source-File>"
   _datum_converter=$1
@@ -97,6 +105,7 @@ Convert_To_W3Data(){
   rm $_w3_body_filepath
 }
 
+####### clean up the BASH env mess
 Clean.Convert(){
   unset _datum_src
   unset _datum_dst
