@@ -3,22 +3,6 @@ author: AbhishekKr
 occasional javascript artisen, comments/suggestions encouraged
 */
 
-var baseinfo_json_file =  "./www-data/baseinfo.json"
-$.ajax({
-    url: baseinfo_json_file,
-    dataType: 'json',
-    async: false,
-    success: function(json_data) {
-      for(var key in json_data){
-        $("#" + key).text(json_data[key]);
-      }
-    }
-}).fail(function( jqxhr, textStatus, error ) {
-      var err = textStatus + ", " + error;
-      console.log( "Request Failed: " + err );
-});
-
-
 
 /**************** listifying **********************/
 
@@ -26,6 +10,9 @@ function openNew(self){
   window.open(self.innerHTML);
   return false;
 }
+
+var currentURL = window.location.href;
+var wwwDataParentURL = currentURL.replace(currentURL.split("/").pop(), "");
 
 var blogEntries = [];
 var options = {
@@ -38,9 +25,11 @@ var options = {
 
 /* add all elements from loaded list */
 function update_list(this_item){
+  var blogURL =  wwwDataParentURL + this_item.blogFile;
+  blogURL = blogURL.replace("/./", "/");
   blogEntries.push({
     blogTitle: this_item.blogTitle,
-    blogFile: this_item.blogFile,
+    blogFile: blogURL,
     blogTags: this_item.blogTags
   });
 }
