@@ -41,9 +41,7 @@ Create_Datum_JSON(){
 
   echo '[' > "${_datum_json}"
   dir_list_run "${_datum_blogstore}" "addBlogToList ${_datum_json}"
-
-  _blogEntry="  { \"blogTitle\":\"~ back Home\" , \"blogFile\":\"/\", \"blogTags\":\"homepage\" }"
-  echo "${_blogEntry}" >> "${_datum_json}"
-
   echo ']' >> "${_datum_json}"
+  #fixing json format to not have comma after last element of list
+  sed -i '/\},/{N;s/\},\s*\n\s*\]/\}\n\]/}' "${_datum_json}"
 }
