@@ -17,8 +17,8 @@ var wwwDataParentURL = currentURL.replace(currentURL.split("/").pop(), "");
 var blogEntries = [];
 var options = {
   valueNames: [ 'blogTitle', 'blogFile', 'blogTags', 'blogDate' ],
-  item: '<li><article> <a class="blogTitleLink" src="#"><h3 class="blogTitle"></h3></a> <div class="blogDate"></div> <a class="blogFile" href="javascript:void(0)" onclick="openNew(this);" onkeypress="openNew(this);"></a> <p class="blogTags"></p> </article> <hr/></li>',
-  page: 10,
+  item: '<li><article> <a class="blogTitleLink" src="#"><h3 class="blogTitle"></h3></a> <div class="blogDate"></div> <a class="blogFile" href="javascript:void(0)" onclick="openNew(this);" onkeypress="openNew(this);"></a> <h5><small class="blogTags"></small><h5> </article></li>',
+  page: 5,
   plugins: [ ListPagination({}), ListFuzzySearch() ]
 };
 

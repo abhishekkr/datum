@@ -1,0 +1,41 @@
+
+.pagination {                                                                   
+  width: 45%;                                                                   
+  margin: 0 auto;                                                               
+  text-align: center;                                                           
+}                                                                               
+
+.pagination li {                                                                
+  display:inline-block;                                                         
+  padding:5px;                                                                  
+}                                                                               
+.pagination > li > a {                                                          
+  border:solid 1px #ccc;                                                        
+  border-radius: 7px;                                                           
+  padding:5px 5px;                                                              
+  margin-bottom:1px;                                                            
+  outline:none;                                                                 
+  border-color:#aaa;                                                            
+  background-color: #bbb;                                                       
+  color: #000;
+}    
+
+.list_div {                                                                     
+  margin: 0 auto;                                                               
+  width: 100%;                                                                  
+  text-align: center;                                                           
+  display: inline-block;                                                        
+}                                                                               
+
+.list {                                                                         
+  font-family:sans-serif;                                                       
+  padding:5px 0 0;                                                             
+}                                                                               
+.list > li {                                                                    
+  width: 100%;                                                                   
+  display:inline-block;                                                         
+  background-color: #eee;                                                       
+  padding:2px;                                                                 
+  box-shadow: inset 2px 2px 2px #fff;                                           
+}                    
+
