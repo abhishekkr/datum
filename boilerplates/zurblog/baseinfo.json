@@ -1,0 +1,22 @@
+{
+  "title": "web.log",
+  "datumBanner": "web.log",
+  "datumSubtitle": "abhishekkr's perspective on stuff in tech and around",
+  "navbar": [
+    {"id": "nav_home", "text": "home", "url": "/boilerplates/zurblog/index.html"},
+    {"id": "nav_github", "text": "@github", "url": "https://github.com/abhishekkr"},
+    {"id": "nav_twitter", "text": "@twitter", "url": "https://twitter.com/abionic"},
+    {"id": "nav_about", "text": "about", "url": "/boilerplates/zurblog/about.html"}
+  ],
+  "sidenavbar": [
+    {"text": "justfewtuts: detailed tutorials", "url": "https://justfewtuts.blogspot.com"},
+    {"text": "hackersmag: security diary", "url": "https://hackersmag.blogspot.com"},
+    {"text": "tekwalk: quick tech tips", "url": "https://tekwalk.blogspot.com"},
+    {"text": "old blog.hub", "url": "https://abhishekkr.wordpress.com"}
+  ],
+  "featured": {
+    "name": "Featured Blog",
+    "intro": "details out what was featured",
+    "url": "#"
+  }
+}
