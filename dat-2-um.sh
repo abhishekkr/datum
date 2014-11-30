@@ -23,7 +23,7 @@ if_not_var "$DATUM_DAT_A"
 end_if
 
 if_not_var $DATUM_W3DATA
-    then_run DATUM_W3DATA="${DATUM_BASEDIR}/www-data"
+    then_run DATUM_W3DATA="${DATUM_BASEDIR}/blog-site"
 end_if
 
 if_not_var $DATUM_JSON
@@ -32,6 +32,10 @@ end_if
 
 if_not_var $DATUM_CONVERTER
   then_run DATUM_CONVERTER="github"
+end_if
+
+if_not_var $DATUM_BOILERPLATE
+  then_run DATUM_BOILERPLATE="zurblog"
 end_if
 
 DATUM_BLOGSTORE="${DATUM_W3DATA}/blogs"
@@ -49,11 +53,14 @@ echo "dat-a:    "$DATUM_DAT_A
 echo "www-data: "$DATUM_W3DATA
 echo ""
 
-mkdir -p $DATUM_BLOGSTORE
-#RAGUEL_PARALLEL="true" dir_list_run "${DATUM_DAT_A}" "Convert_To_W3Data '${DATUM_BLOGSTORE}'"
+mkdir -p "${DATUM_BLOGSTORE}"
+
+cp -ar "${THIS_DIR}/boilerplates/${DATUM_BOILERPLATE}/"* "${DATUM_W3DATA}"
 
 dir_list_run "${DATUM_DAT_A}" "Convert_To_W3Data '${DATUM_CONVERTER}' '${DATUM_BLOGSTORE}'"
+#RAGUEL_PARALLEL="true" dir_list_run "${DATUM_DAT_A}" "Convert_To_W3Data '${DATUM_BLOGSTORE}'"
 
 Create_Datum_JSON "${DATUM_JSON}" "${DATUM_BLOGSTORE}"
+
 
 Clean.Convert

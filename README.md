@@ -30,3 +30,9 @@ See the effect, change directory to datum's root... then
 
 * to convert using Pandoc utlity (need to be installed using cabal)
 > DATUM_CONVERTER="pandoc" DATUM_BASEDIR="example/" ./dat-2-um.sh
+
+* if got some other boilerplate for blog
+> DATUM_BOILERPLATE=zurblog DATUM_CONVERTER="pandoc" DATUM_BASEDIR="example/" ./dat-2-um.sh
+
+To change links from top-nav-bar and side-nav-bar; or to change Title, Heading, Subheading of blog... configure the desired values in **baseinfo.json** available at base of created blog-dir.
+

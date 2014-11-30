@@ -10,4 +10,8 @@ temp/*
 *.lock
 raguel-master
 example/www-data
+example/blog-site
 boilerplates/zurblog/www-data
+boilerplates/zurblog/blogs
+boilerplates/zurblog/datum.json
+www-data/blogs
