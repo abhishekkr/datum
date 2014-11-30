@@ -17,7 +17,7 @@
       <div class="row">
         <div class="large-12 columns">
           <div class="nav-bar right">
-            <ul id="navbar_buttons" class="button-group">
+            <ul id="navbar_buttons" class="button-group round">
               <li><a id="link_home" href="#" class="button">home</a></li>
               <li><a id="link_github" idhref="#" class="button">@github</a></li>
               <li><a id="link_twitter" href="#" class="button">@twitter</a></li>
@@ -41,8 +41,8 @@
           <div id="search_sort_banner">
             <h5>blog search</h5>
             <span id="search_sort">
-              <input class="search" placeholder="Search" /><br/><br/>
-              <input class="fuzzy-search" placeholder="Fuzzy Search" /><br/><br/>
+              <input type="text" onKeyPress="console.log('><');" class="search" placeholder="Search" /><br/><br/>
+              <input type="text" class="fuzzy-search" placeholder="Fuzzy Search" /><br/><br/>
               <span>Sort<br/>
                 <button class="sort small" data-sort="blogTitle">by Title</button><br/>
                 <button class="sort small" data-sort="blogTags">by Tags</button><br/>
@@ -50,16 +50,16 @@
             </span>
           </div>
           <h5>main blogs</h5>
-          <ul class="side-nav">
+          <ul id="sidenavbar_buttons" class="side-nav" role="navigation">
+            <li><a href="#">abhishekkr.wordpress.com</a></li>
             <li><a href="#">justfewtuts.blogspot.com</a></li>
             <li><a href="#">hackersmag.blogspot.com</a></li>
             <li><a href="#">tekwalk.blogspot.com</a></li>
           </ul>
 
           <div class="panel">
-            <h5>Latest</h5>
-            <p>${DatumLatestTitleAndTop100Chars}</p>
-            <a href="${DatumLatestLink}">Read More →</a>
+            <h5><small>Featured Blog</small></h5>
+            <p id="featured_blog"></p>
           </div>
         </aside>
       </div>
@@ -70,11 +70,11 @@
           <hr/>
           <div class="row">
             <div class="large-6 columns">
-              <p>x©x Copyleft</p>
+              <p>x©x <a href="https://www.gnu.org/copyleft/">Copyleft</a></p>
             </div>
             <div class="large-6 columns">
               <ul class="inline-list right">
-                <li><a href="#">abhishekkr.wordpress.com</a></li>
+                <li>built using: <a href="https://github.com/abhishekkr/datum">Datum</a></li>
               </ul>
             </div>
           </div>
