@@ -43,7 +43,7 @@ function updateFeaturedBlogBar(dict, nav_key){
   $("#featured_blog").html(nav_html);
 }
 
-var baseinfo_json_file =  "./www-data/baseinfo.json"
+var baseinfo_json_file =  "./baseinfo.json"
 $.ajax({
     url: baseinfo_json_file,
     dataType: 'json',

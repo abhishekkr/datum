@@ -29,7 +29,7 @@ addBlogToList(){
     if [[ "$_blogTitle" == "" ]]; then
       _blogTitle="$_blogName"
     fi
-    _blogEntry="  { \"blogTitle\":\"${_blogTitle}\" , \"blogFile\":\"./www-data/blogs/${_blogFilename}\", \"blogTags\":\"${_blogTags}\", \"blogDate\":\"${_timeDiv}\" },"
+    _blogEntry="  { \"blogTitle\":\"${_blogTitle}\" , \"blogFile\":\"./blogs/${_blogFilename}\", \"blogTags\":\"${_blogTags}\", \"blogDate\":\"${_timeDiv}\" },"
     echo "${_blogEntry}" >>  "${_json}"
   fi
 }

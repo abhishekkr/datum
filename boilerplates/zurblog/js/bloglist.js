@@ -35,7 +35,7 @@ function update_list(this_item){
   });
 }
 
-var datum_json_file =  "./www-data/datum.json"
+var datum_json_file =  "./datum.json"
 $.ajax({
     url: datum_json_file,
     dataType: 'json',
