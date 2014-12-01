@@ -4,7 +4,7 @@
 #### **'datum'** is (in my use) slimmest, quickest markdown based blogging helper
 
 ### How it works? 
-> * you keep your markdown blogs named as "DD-MM-YYYY.<any-name-at-all-without-dots>.md" in a data dir
+> * you keep your markdown blogs named as "YYYY-MM-DD.<any-name-at-all-without-dots>.md" in a data dir
 > * provide this data dir path to datum and get your static blogging content to be served
 
 ---
