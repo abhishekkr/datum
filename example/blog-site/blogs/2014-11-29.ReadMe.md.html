@@ -1,0 +1,21 @@
+<h2 id="datum">## datum</h2>
+<h4 id="datum-is-in-my-use-slimmest-quickest-markdown-based-blogging-helper"><strong>'datum'</strong> is (in my use) slimmest, quickest markdown based blogging helper</h4>
+<h3 id="how-it-works">How it works?</h3>
+<blockquote>
+<ul>
+<li>you keep your markdown blogs named as &quot;YYYY-MM-DD.<any-name-at-all-without-dots>.md&quot; in a data dir</li>
+<li>provide this data dir path to datum and get your static blogging content to be served</li>
+</ul>
+</blockquote>
+<hr />
+<p>Meaning: &gt; da·tum &gt; ˈdātəm,ˈdatəm/ &gt; noun &gt; 1. &gt; a piece of information. &gt; 2. &gt; a fixed starting point of a scale or operation</p>
+<hr />
+<h4 id="example">Example</h4>
+<p>I've attached a very 0-level original example (to be improved later, PR welcomed). See the effect, change directory to datum's root... then</p>
+<ul>
+<li><p>to convert using Github API (requires Internet) &gt; DATUM_BASEDIR=&quot;example/&quot; ./dat-2-um.sh</p></li>
+<li><p>to convert using Pandoc utlity (need to be installed using cabal) &gt; DATUM_CONVERTER=&quot;pandoc&quot; DATUM_BASEDIR=&quot;example/&quot; ./dat-2-um.sh</p></li>
+<li><p>if got some other boilerplate for blog &gt; DATUM_BOILERPLATE=zurblog DATUM_CONVERTER=&quot;pandoc&quot; DATUM_BASEDIR=&quot;example/&quot; ./dat-2-um.sh</p></li>
+</ul>
+<p>To change links from top-nav-bar and side-nav-bar; or to change Title, Heading, Subheading of blog... configure the desired values in <strong>baseinfo.json</strong> available at base of created blog-dir.</p>
+<hr />

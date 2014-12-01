@@ -1,0 +1,29 @@
+<h2 id="datum-howto">## datum HowTo</h2>
+<ul>
+<li><p>Write your Blogs/Articles in Markdown</p></li>
+<li><p>Save them with filename convention of &quot;YYYY-MM-DD.<any-suited-name-without-dots>.md&quot; in one directory say &quot;<markdown-blog>&quot;</p></li>
+<li><p>Addding following lines markdown file will make sure they have a proper Title and Tag in blog-listing. &gt; ```meta-from: markdown``` &gt; ```meta-to: html``` &gt; ```meta-title: How to use Datum``` &gt; ```meta-tags: datum howto tutorial Nov 2014 blog```</p></li>
+<li><p>To convert using Github API (requires Internet)</p>
+<pre><code>DATUM_DAT_A=&quot;&lt;markdown-blog&gt;&quot; ./dat-2-um.sh</code></pre>
+<blockquote>
+<p>this would create a &quot;blog-site&quot; directory in parent-dir of &quot;<markdown-blog>&quot; and then copy over the default boilerplate of &quot;zurblog&quot; with converted blogs in it</p>
+</blockquote></li>
+<li><p>To convert using Pandoc utlity (need to be installed using cabal)</p>
+<pre><code>DATUM_CONVERTER=&quot;pandoc&quot; DATUM_DAT_A=&quot;&lt;markdown-blog&gt;&quot; ./dat-2-um.sh</code></pre></li>
+<li><p>To convert using Pandoc utlity and place it in desired destination &quot;<html-blogdir>&quot;</p>
+<pre><code>DATUM_CONVERTER=&quot;pandoc&quot; DATUM_DAT_A=&quot;&lt;markdown-blog&gt;&quot; DATUM_W3DATA=&quot;&lt;html-blogdir&gt;&quot; ./dat-2-um.sh</code></pre>
+<blockquote>
+<p>this would create a &quot;<html-blogdir>&quot; directory in parent-dir of &quot;<markdown-blog>&quot; and then copy over the default boilerplate of &quot;zurblog&quot; with converted blogs in it</p>
+</blockquote></li>
+<li><p>if got some other boilerplate for blog</p>
+<pre><code>DATUM_BOILERPLATE=bootlog DATUM_CONVERTER=&quot;pandoc&quot; DATUM_BASEDIR=&quot;example/&quot; ./dat-2-um.sh</code></pre>
+<blockquote>
+<p>This will apply &quot;bootlog&quot; boilerplate (if exists). Here you see &quot;DATUM_BASEDIR&quot; variable being used, it depicts a parent dir where &quot;markdown&quot; and &quot;generated-html&quot; both can reside if not defined explicitly. Since neither &quot;DATUM_W3DATA&quot; nor &quot;DATUM_DAT_A&quot; have been defined here, the value expected for them would be &quot;DATUM_BASEDIR/blog-site&quot; and &quot;DATUM_BASEDIR/dat-a&quot; respectively.</p>
+</blockquote></li>
+</ul>
+<hr />
+<h3 id="customizing-generated-blog-with-personalized-links">Customizing generated blog with personalized links</h3>
+<blockquote>
+<p>To change links from top-nav-bar and side-nav-bar; or to change Title, Heading, Subheading of blog... configure the desired values in <strong>baseinfo.json</strong> available at base of created blog-dir.</p>
+</blockquote>
+<hr />

@@ -1,0 +1,22 @@
+{
+  "title": "web.log maintainer",
+  "datumBanner": "Datum",
+  "datumSubtitle": "my way blog generator from Markdown articles",
+  "navbar": [
+    {"id": "nav_home", "text": "home", "url": "/datum/example/blog-site/index.html"},
+    {"id": "nav_github", "text": "@github", "url": "https://github.com/abhishekkr"},
+    {"id": "nav_twitter", "text": "@twitter", "url": "https://twitter.com/abionic"},
+    {"id": "nav_about", "text": "about", "url": "/datum/example/blog-site/about.html"}
+  ],
+  "sidenavbar": [
+    {"text": "justfewtuts: detailed tutorials", "url": "https://justfewtuts.blogspot.com"},
+    {"text": "hackersmag: security diary", "url": "https://hackersmag.blogspot.com"},
+    {"text": "tekwalk: quick tech tips", "url": "https://tekwalk.blogspot.com"},
+    {"text": "old blog.hub", "url": "https://abhishekkr.wordpress.com"}
+  ],
+  "featured": {
+    "name": "HowTo Datum",
+    "intro": "detailed HowTo Use guide on Datum",
+    "url": "/datum/example/blog-site/blogs/2014-11-30.HowToUse.md.html"
+  }
+}
