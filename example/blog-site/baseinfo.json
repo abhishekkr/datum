@@ -3,6 +3,7 @@
   "datumBanner": "Datum",
   "datumSubtitle": "my way blog generator from Markdown articles",
   "navbar": [
+    {"id": "nav_megithub", "text": "fork datum@github", "url": "https://github.com/abhishekkr/datum"},
     {"id": "nav_home", "text": "home", "url": "/datum/example/blog-site/index.html"},
     {"id": "nav_github", "text": "@github", "url": "https://github.com/abhishekkr"},
     {"id": "nav_twitter", "text": "@twitter", "url": "https://twitter.com/abionic"},
