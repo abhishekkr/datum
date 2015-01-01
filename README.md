@@ -20,6 +20,8 @@ Meaning:
 
 ---
 
+> NOTE: datum doesn't bring in updates for boilerplate if changed post-creation, so required full cleanup and generation in such case
+
 #### Example
 
 I've attached a very 0-level original example (to be improved later, PR welcomed).
