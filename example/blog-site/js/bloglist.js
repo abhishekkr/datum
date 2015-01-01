@@ -3,13 +3,17 @@ author: AbhishekKr
 occasional javascript artisen, comments/suggestions encouraged
 */
 
+function openBlog(self) {
+  blogFileObject = self.parentNode.getElementsByClassName("blogFile")
+  if(blogFileObject.length == 1){
+    window.open(blogFileObject[0].innerHTML)
+  } else {
+    console.log("ERROR: No link found for this.")
+  }
+}
+
 
 /**************** listifying **********************/
-
-function openNew(self){
-  window.open(self.innerHTML);
-  return false;
-}
 
 var currentURL = window.location.href;
 var wwwDataParentURL = currentURL.replace(currentURL.split("/").pop(), "");
@@ -18,7 +22,7 @@ var blogEntries = [];
 var fuzzyOptions = { searchClass: "fuzzy-search", location: 0, distance: 100, threshold: 0.4, multiSearch: true };
 var options = {
   valueNames: [ 'blogTitle', 'blogFile', 'blogTags', 'blogDate' ],
-  item: '<li><article> <a class="blogTitleLink" src="#"><h3 class="blogTitle"></h3></a> <div class="blogDate"></div> <a class="blogFile" href="javascript:void(0)" onclick="openNew(this);" onkeypress="openNew(this);"></a> <h5><small class="blogTags"></small><h5> </article></li>',
+  item: '<li><article><h3><a class="blogTitle" href="javascript:void(0)" onClick="openBlog(this);" onkeypress="openBlog(this);"></a> <span class="blogFile"></span></h3> <div class="blogDate"></div> <h4><small class="blogTags"></small></h4> </article></li>',
   page: 5,
   plugins: [ ListPagination({}), ListFuzzySearch() ]
 };
