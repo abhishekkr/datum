@@ -8,11 +8,15 @@ function toggleBlogContentToList(){
     $DOM("#bloglist").style.display = "block";
 }
 
-function openBlog(self) {
-  var blogFileObject = self.parentNode.getElementsByClassName("blogFile");
-  var backToMenu = "<div width=\"100%\" style=\"text-align:right;\"><a href=\"#\" onClick=\"toggleBlogContentToList();\" onkeypress=\"toggleBlogContentToList();\"><i>back to blog-list</i></a></div>";
-  if(blogFileObject.length == 1){
-    var blogContent = loadURI(blogFileObject[0].innerHTML);
+function toggleBlogListToContent(blog_url){
+    var blog_link = window.location.href.split('?')[0] + "?blog=" + encodeURIComponent(blog_url);
+
+    var backToMenu = "<div width=\"50%\" style=\"text-align:right;\"><i>";
+    backToMenu += "<span><a href=\"" + blog_link + "\">blog-link</a><span>, ";
+    backToMenu += "<span><a href=\"#\" onClick=\"toggleBlogContentToList();\" onkeypress=\"toggleBlogContentToList();\">back to blog-list</a><span>";
+    backToMenu += "</i></div>";
+
+    var blogContent = loadURI(blog_url);
     if (undefined != blogContent){
       blogContent = backToMenu + blogContent + backToMenu;
       $DOM("#blogcontent").innerHTML = blogContent;
@@ -21,6 +25,12 @@ function openBlog(self) {
     } else {
       console.log("ERROR: Cannot browse link for this blog.");
     }
+}
+
+function openBlog(self) {
+  var blogFileObject = self.parentNode.getElementsByClassName("blogFile");
+  if(blogFileObject.length == 1){
+    toggleBlogListToContent(blogFileObject[0].innerHTML)
   } else {
     console.log("ERROR: No link found for this.");
   }
@@ -79,3 +89,15 @@ $('*').filter(function() {
    }
 });
 
+/****************/
+function getUrlVars() {
+  var vars = {};
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+      vars[key] = value;
+    });
+  return vars;
+}
+var get_vars = getUrlVars()
+if (get_vars.hasOwnProperty("blog")) {
+  toggleBlogListToContent(decodeURIComponent(get_vars["blog"]));
+}
