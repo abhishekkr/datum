@@ -3,6 +3,11 @@ author: AbhishekKr
 occasional javascript artisen, comments/suggestions encouraged
 */
 
+/*start:*********** abhishekkr.github.io/j ******************/
+function $DOM(a,b){var c=document.querySelectorAll(a);if(b===undefined){b=0}return c[b]}
+function loadURI(a){var b=new XMLHttpRequest();b.open("GET",a,false);b.send();return b.responseText}
+/*end:************* abhishekkr.github.io/j ******************/
+
 /* update tag-IDs with respective text */
 function updateTextIfKey(dict, key){
   if(dict.hasOwnProperty(key)){

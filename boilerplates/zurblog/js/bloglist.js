@@ -3,12 +3,26 @@ author: AbhishekKr
 occasional javascript artisen, comments/suggestions encouraged
 */
 
+function toggleBlogContentToList(){
+    $DOM("#blogcontent").style.display = "none";
+    $DOM("#bloglist").style.display = "block";
+}
+
 function openBlog(self) {
-  blogFileObject = self.parentNode.getElementsByClassName("blogFile")
+  var blogFileObject = self.parentNode.getElementsByClassName("blogFile");
+  var backToMenu = "<div width=\"100%\" style=\"text-align:right;\"><a href=\"#\" onClick=\"toggleBlogContentToList();\" onkeypress=\"toggleBlogContentToList();\"><i>back to blog-list</i></a></div>";
   if(blogFileObject.length == 1){
-    window.open(blogFileObject[0].innerHTML)
+    var blogContent = loadURI(blogFileObject[0].innerHTML);
+    if (undefined != blogContent){
+      blogContent = backToMenu + blogContent + backToMenu;
+      $DOM("#blogcontent").innerHTML = blogContent;
+      $DOM("#blogcontent").style.display = "block";
+      $DOM("#bloglist").style.display = "none";
+    } else {
+      console.log("ERROR: Cannot browse link for this blog.");
+    }
   } else {
-    console.log("ERROR: No link found for this.")
+    console.log("ERROR: No link found for this.");
   }
 }
 
