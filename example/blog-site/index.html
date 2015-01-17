@@ -20,15 +20,15 @@
 
       <div class="row">
         <div class="large-12 columns">
-          <div class="nav-bar right">
-            <ul id="navbar_buttons" class="button-group round">
+          <div class="panel nav-bar right">
+            <ul id="navbar_buttons" class="hide-for-small button-group round">
               <li><a id="link_home" href="#" class="button">home</a></li>
               <li><a id="link_github" idhref="#" class="button">@github</a></li>
               <li><a id="link_twitter" href="#" class="button">@twitter</a></li>
               <li><a id="link_about" href="#" class="button">about</a></li>
             </ul>
           </div>
-          <h1 id="datumBanner">${DatumBanner}</h1>
+          <h1><a id="datumBanner" href="#" onClick="toggleBlogContentToList();" onkeypress="toggleBlogContentToList();">${DatumBanner}</a></h1>
           <h5 id="datumSubtitle" class="subheader">${DatumSubtitle}</h5>
           <hr/>
         </div>
@@ -39,7 +39,7 @@
         <div class="large-9 columns" role="content">
           <div id="bloglist">
             <div class="list_div"> <ul class="list"> </ul> </div>
-            <div class="pagination_div"> <span class="pagination"></span> </div>
+            <div class="pagination_div"> <ul class="pagination"></span> </div>
           </div>
           <div id="blogcontent">
           </div>
