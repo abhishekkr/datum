@@ -4,21 +4,30 @@ occasional javascript artisen, comments/suggestions encouraged
 */
 
 function toggleBlogContentToList(){
+    document.location.hash = "homepage";
     $DOM("#blogcontent").style.display = "none";
     $DOM("#bloglist").style.display = "block";
+}
+
+function blogHashFromLink(blog_link){
+  return blog_link.replace(blog_domain, '')
+}
+
+function blogLinkFromHash(blog_hash){
+  return blog_domain + blog_hash
 }
 
 function toggleBlogListToContent(blog_url){
     var blog_link = window.location.href.split('?')[0] + "?blog=" + encodeURIComponent(blog_url);
 
     var backToMenu = "<div width=\"50%\" style=\"text-align:right;\"><i>";
-    backToMenu += "<span><a href=\"" + blog_link + "\">blog-link</a><span>, ";
-    backToMenu += "<span><a href=\"#\" onClick=\"toggleBlogContentToList();\" onkeypress=\"toggleBlogContentToList();\">back to blog-list</a><span>";
+    document.location.hash = blogHashFromLink(blog_url);
+    backToMenu += "<span><a href=\"#\" class=\"button radius small\" onClick=\"toggleBlogContentToList();\" onkeypress=\"toggleBlogContentToList();\">back to blog-list</a><span>";
     backToMenu += "</i></div>";
 
     var blogContent = loadURI(blog_url);
     if (undefined != blogContent){
-      blogContent = backToMenu + blogContent + backToMenu;
+      blogContent = blogContent + backToMenu;
       $DOM("#blogcontent").innerHTML = blogContent;
       $DOM("#blogcontent").style.display = "block";
       $DOM("#bloglist").style.display = "none";
@@ -39,6 +48,7 @@ function openBlog(self) {
 
 /**************** listifying **********************/
 
+var blog_domain = window.location.origin;
 var currentURL = window.location.href;
 var wwwDataParentURL = currentURL.replace(currentURL.split("/").pop(), "");
 
@@ -90,14 +100,9 @@ $('*').filter(function() {
 });
 
 /****************/
-function getUrlVars() {
-  var vars = {};
-  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-      vars[key] = value;
-    });
-  return vars;
-}
-var get_vars = getUrlVars()
-if (get_vars.hasOwnProperty("blog")) {
-  toggleBlogListToContent(decodeURIComponent(get_vars["blog"]));
+var blog_hash = document.location.hash.replace(/^#/, '');
+if (blog_hash != "" && blog_hash != "homepage") {
+  var blog_url = decodeURIComponent(blogLinkFromHash(blog_hash));
+  console.log("Direct Blog Link:", blog_url,blog_hash);
+  toggleBlogListToContent(blog_url);
 }
