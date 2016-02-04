@@ -85,24 +85,38 @@ Markdown_To_HTML(){
 ####### enables Meta, Blog extraction AND conversion handling
 Convert_To_W3Data(){
   wrong_params "$#" "3" "Error: Convert_To_W3Data <Destination-Dir> <Datum-Source-File>"
-  _datum_converter=$1
-  _datum_dst_dir=$2
-  _datum_src=$3
+  export DATUM_CONVERTER="$1"
+  _datum_dst_dir="$2"
+  _datum_src="$3"
 
-  if_not_dir $_datum_dst_dir
+  if_not_dir "$_datum_dst_dir"
       then_run "echo \"ERROR: '${DATUM_W3DATA}' path not found.\" ; exit 1"
 
-  _datum_filename="$(basename $_datum_src)"
+  _need_conversion=0
+  _datum_filename="$(basename "$_datum_src")"
   _w3_filepath="${_datum_dst_dir}/${_datum_filename}"
   _w3_html_filepath="${_w3_filepath}.html"
   _w3_body_filepath="${_w3_filepath}.body"
   _w3_meta_filepath="${_w3_filepath}.meta"
+  _w3_md5_filepath="${_w3_filepath}.md5"
 
-  Extract_Data_Meta $_datum_src $_w3_meta_filepath
-  Extract_Data_Body $_datum_src $_w3_body_filepath
-  Markdown_To_HTML $_w3_body_filepath "${_w3_html_filepath}"
+  if [[ -f "$_w3_md5_filepath" ]]; then
+    local datumMD5=$(md5sum "$_datum_src" | awk '{print $1}')
+    local w3DatumMD5=$(cat "$_w3_md5_filepath")
+    if [[ "$datumMD5" == "$w3DatumMD5" ]]; then
+      _need_conversion=1
+    fi
+  fi
 
-  rm $_w3_body_filepath
+  if [[ $_need_conversion -eq 0 ]]; then
+    md5sum "$_datum_src" | awk '{print $1}' | tee "$_w3_md5_filepath"
+
+    Extract_Data_Meta "$_datum_src" "$_w3_meta_filepath"
+    Extract_Data_Body "$_datum_src" "$_w3_body_filepath"
+    Markdown_To_HTML "$_w3_body_filepath" "${_w3_html_filepath}"
+
+    rm "$_w3_body_filepath"
+  fi
 }
 
 ####### clean up the BASH env mess
