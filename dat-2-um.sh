@@ -57,8 +57,7 @@ mkdir -p "${DATUM_BLOGSTORE}"
 
 cp --no-clobber -ar "${THIS_DIR}/boilerplates/${DATUM_BOILERPLATE}/"* "${DATUM_W3DATA}"
 
-dir_list_run "${DATUM_DAT_A}" "Convert_To_W3Data '${DATUM_CONVERTER}' '${DATUM_BLOGSTORE}'"
-#RAGUEL_PARALLEL="true" dir_list_run "${DATUM_DAT_A}" "Convert_To_W3Data '${DATUM_BLOGSTORE}'"
+RAGUEL_PARALLEL="true" dir_list_run "${DATUM_DAT_A}" "Convert_To_W3Data '${DATUM_CONVERTER}' '${DATUM_BLOGSTORE}'"
 
 Create_Datum_JSON "${DATUM_JSON}" "${DATUM_BLOGSTORE}"
 

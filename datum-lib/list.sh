@@ -41,7 +41,8 @@ Create_Datum_JSON(){
 
   echo '[' > "${_datum_json}"
 
-  dir_list_run "${_datum_blogstore}" "addBlogToList ${_datum_json}"
+  RAGUEL_PARALLEL="true" dir_list_run "${_datum_blogstore}" "addBlogToList ${_datum_json}"
+
   #fixing json format to not have comma after last element of list
   _line_number_to_fix=$(wc -l "$_datum_json" | awk '{print $1}')
   sed -i ''$_line_number_to_fix's/\},/\}/' "$_datum_json"
