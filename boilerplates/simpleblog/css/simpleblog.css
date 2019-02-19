@@ -35,9 +35,6 @@ header ul.mui-list--inline {
 header a {
   color: #565656;
 }
-.mui-appbar {
-  background-color: #eee;
-}
 
 header table {
   width: 100%;
@@ -79,16 +76,6 @@ footer {
   position: relative;
   display: inline-block;
 }
-.card-wide{
-  min-height: 340px;
-  min-width: 300px;
-  width: 75%;
-}
-.card-narrow{
-  min-height: 340px;
-  min-width: 200px;
-  width: 23%;
-}
 .xm-shadow {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
@@ -96,6 +83,44 @@ footer {
   box-shadow: 0 14px 28px
   rgba(0,0,0,0.25), 0 10px 10px
   rgba(0,0,0,0.22);
+}
+
+.card-wide {
+  min-height: 340px;
+  min-width: 300px;
+  width: 75%;
+}
+.card-narrow {
+  min-height: 640px;
+  min-width: 200px;
+}
+.card-preview {
+  min-height: 340px;
+  min-width: 200px;
+}
+.card-content {
+  margin: 5px;
+}
+.card-main-content {
+  margin: 5px;
+  border-radius: 2px;
+  box-sizing: border-box;
+  border-top: 2px solid #e0e0e0;
+  padding-top: 10px;
+}
+.highlight {
+  font-style: italic;
+  font-family: cursive;
+  font-stretch: condensed;
+}
+.summary {
+  font-family: fantasy;
+  font-stretch: condensed;
+  height: 100%;
+  width: 100%;
+}
+.pad5px {
+  padding-top: 5px;
 }
 
 /**
