@@ -114,13 +114,18 @@ footer {
   font-stretch: condensed;
 }
 .summary {
-  font-family: fantasy;
-  font-stretch: condensed;
+  font-family: 'PT Sans Narrow', sans-serif;
   height: 100%;
   width: 100%;
 }
 .pad5px {
   padding-top: 5px;
+}
+.pad2px {
+  padding-top: 2px;
+}
+.pad1px {
+  padding-top: 1px;
 }
 
 /**
