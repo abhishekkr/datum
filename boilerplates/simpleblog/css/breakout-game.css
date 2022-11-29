@@ -1,1 +1,5 @@
-gameOnCanvas { background: #eee;  display: block; margin: 0 auto; }
+#showCardParent { width: inherit; }
+#showCard { width: inherit; }
+#gameOnCanvasGParent { width: inherit; }
+#gameOnCanvasParent { width: inherit; }
+#gameOnCanvas { background: #eee;  display: block; margin: 0 auto; width: inherit; }

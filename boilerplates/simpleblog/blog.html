@@ -5,14 +5,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MUI Landing Page Example</title>
-    <link href="//cdn.muicss.com/mui-0.9.41/css/mui.min.css" rel="stylesheet" type="text/css" />
-    <link href="//cdn.muicss.com/mui-0.9.41/extra/mui-colors.min.css" rel="stylesheet" type="text/css" />
-    <script src="//cdn.muicss.com/mui-0.9.41/js/mui.min.js"></script>
+    <title>ABK</title>
 
-    <link href="/css/simpleblog.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.muicss.com/mui-0.9.41/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.muicss.com/mui-0.9.41/extra/mui-colors.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="https://cdn.muicss.com/mui-0.9.41/js/mui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
     <style>
      /* Tutorial CSS goes here */
+      #blogcontent{
+        text-align: left;
+      }
     </style>
   </head>
   <body>
@@ -45,7 +49,7 @@
             <div class="mui--text-dark-secondary mui--text-body2">PINNED POST</div>
             <div class="mui-divider"></div>
             <br>
-            <!-- blog goes here -->
+            <!-- blog goes here --><div class="wip">the pen is out of ink, my mug got no swill<br/>moving older blogs here and new, soon I will</div>
             <br>
             <br>
             <div class="mui--text-dark-secondary mui--text-body2">RECENT POSTS</div>
@@ -53,7 +57,9 @@
             <br>
             <!-- blog goes here -->
             <br>
+            <br>
             <!-- blog goes here -->
+              <div id="blogcontent"></div>
           </div>
         </div>
       </div>
@@ -62,6 +68,11 @@
       <div class="mui-container mui--text-center">
         from <a href="https://twitter.com/abionic">@abionic</a> with ♥ | built using <a href="https://github.com/abhishekkr/datum">datum</a>
       </div>
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Nerko+One&family=Pacifico&display=swap" rel="stylesheet">
     </footer>
+
+    <script src="/js/simpleblog.js"></script>
+    <link href="/css/simpleblog.css" rel="stylesheet" type="text/css" />
   </body>
 </html>

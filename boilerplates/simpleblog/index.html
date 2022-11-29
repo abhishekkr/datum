@@ -10,6 +10,7 @@
     <script src="//cdn.muicss.com/mui-0.9.41/js/mui.min.js"></script>
 
     <link href="/css/simpleblog.css" rel="stylesheet" type="text/css" />
+    <link href="/css/breakout-game.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <header class="mui-appbar mui--z1 mui--bg-color-blue-grey-400">
@@ -33,12 +34,12 @@
     <div id="content-wrapper" class="mui--text-center">
       <div class="mui--appbar-height"></div>
       <br/>
-      <div class="mui-card card-wide xm-shadow">
-        <div class="card-content">
+      <div id="showCardParent" class="mui-card card-wide xm-shadow">
+        <div id="showCard" class="card-content">
           <div class="mui--text-right mui--text-dark-hint">fear and loathing on interweb!</div>
-          <div class="mui--text-left card-main-content">
-            <span class="mui--text-dark-secondary highlight">best way 'to have' is 'to create', even when not the best way... it's a learning or just a <b>Game</b></span>
-            <div class="summary mui--align-middle mui--text-justify">
+          <div id="gameOnCanvasGParent" class="mui--text-left card-main-content">
+            <span class="mui--text-dark-secondary highlight">one way 'to have' is 'to create', even when not the best way... it's a learning or just a <b>Game</b></span>
+            <div id="gameOnCanvasParent" class="summary mui--align-middle mui--text-justify">
               <div class="game-on">
                 <canvas id="gameOnCanvas" width="640" height="320"></canvas>
               </div>
@@ -52,12 +53,16 @@
         <div class="mui-row">
           <div class="mui-col-md-4 card-preview xm-shadow">
             <div class="card-content">
-              <div class="mui--text-right mui--text-dark-hint">code <span><a href="code.html"><img src="img/icon-next.svg" alt="next"/></a></span></div>
+              <div class="mui--text-right mui--text-dark-hint"><a href="code.html">code <span><img src="img/icon-next.svg" alt="next"/></span></a></div>
               <div class="mui--text-left card-main-content">
                 <span class="mui--text-dark-secondary highlight">opensource projects, snippets and tutorials</span>
                 <div class="summary">
+                  <div class="pad2px item"><span class="dimlight bold"><a href="https://github.com/abhishekkr/gmail-helper">gmail-helper</a></span> (python): cli utilities for GMail API over OAuth2 like delete filtered mails</div>
                   <div class="pad2px item"><span class="dimlight bold"><a href="https://github.com/abhishekkr/weeproxy">weeproxy</a></span> (golang): a wee bit http reverse proxy with load-balancing, graceful stop, metrics, rate-limiting and circuit-breaking</div>
+                  <div class="pad2px item"><span class="dimlight bold"><a href="https://github.com/abhishekkr/dory">dory</a></span> (golang): secret sharing service with auto-expiry as default, doesn't need accounts</div>
+                  <br/>
                   <div class="pad2px item"><span class="dimlight bold"><a href="https://gist.github.com/abhishekkr/80abac819c55458a66e32a49f4e7d608">go-versions</a></span> (bash snippet): download and enable different go lang versions</div>
+                  <br/>
                   <div class="pad2px item"><span class="dimlight bold"><a href="https://github.com/abhishekkr/tutorials_as_code/blob/master/talks-articles/README.md">tutorials</a></span> notes from talks and articles on programming languages, services, tools, more</div>
                 </div>
               </div>
@@ -65,22 +70,42 @@
           </div>
           <div class="mui-col-md-4 card-preview xm-shadow">
             <div class="card-content">
-              <div class="mui--text-right mui--text-dark-hint">not(code) <span><a href="uncode.html"><img src="img/icon-next.svg" alt="next"/></a></span></div>
+              <div class="mui--text-right mui--text-dark-hint"><a href="uncode.html">not(code) <span><img src="img/icon-next.svg" alt="next"/></span></a></div>
               <div class="mui--text-left card-main-content">
                 <span class="mui--text-dark-secondary highlight">art, music and writings via primal and digital</span>
                 <div class="summary">
-                  $animated-pinned-entries
+                  <div class="pad2px item"><span class="dimlight bold"><a href="https://github.com/abhishekkr/untech-yearning/tree/master/music/">guitar, ukulele & other music</a></span> notes from self-study</div>
+                  <div class="pad2px item"><span class="dimlight bold"><a href="http://ccmixter.org/people/abhishekkr">music/sound samples</a></span> provided under creative commons license</div>
+                  <div class="pad2px item"><span class="dimlight bold"><a href="https://www.instagram.com/explore/tags/thetunerambler/">instagram#thetunerambler</a></span> collection of some musical ramblings</div>
+                  <br/>
+                  <div class="pad2px item"><span class="dimlight bold"><a href="https://github.com/abhishekkr/untech-yearning/tree/master/lit/">poetry, stories &amp; more</a></span> forms of word collection</div>
+                  <br/>
+                  <div class="pad2px item"><span class="dimlight bold"><a href="https://500px.com/p/abionic?view=photos">photographs</a></span> curated from the reality's perception</div>
+                  <div class="pad2px item"><span class="dimlight bold"><a href="https://www.deviantart.com/abhishekkr">artwork</a></span> collection of some 3D/2D artwork, sketches &amp; photographs</div>
                 </div>
               </div>
             </div>
           </div>
           <div class="mui-col-md-4 card-preview xm-shadow">
             <div class="card-content">
-              <div class="mui--text-right mui--text-dark-hint">blog <span><a href="blog.html"><img src="img/icon-next.svg" alt="next"/></a></span></div>
+              <div class="mui--text-right mui--text-dark-hint"><a href="blog.html">blog <span><img src="img/icon-next.svg" alt="next"/></span></a></div>
               <div class="mui--text-left card-main-content">
                 <span class="mui--text-dark-secondary highlight">on systems, development and security</span>
                 <div class="summary">
-                  <div class="pad2px item"><span class="dimlight bold"><a href="http://justfewtuts.blogspot.com/2014/10/what-qualifies-project-to-be-product.html">blog:</a></span> What qualifies the Project to be a Product?</div>
+                  <div class="pad2px item">have not been posting anything recently,<br/> will start again soon</div>
+                  <br/>
+                  <div class="pad2px item"><span class="dimlight bold"><a href="http://justfewtuts.blogspot.com/2014/10/what-qualifies-project-to-be-product.html">last blog Oct/2014:</a></span> What qualifies the Project to be a Product?</div>
+                  <br/>
+                  <div class="pad2px item"><span class="dimlight bold">Older Blogs</span>
+                    <ul>
+                      <li><a href="https://abhishekkr.wordpress.com/">ABK'S Tech Memorandum</a></li>
+                      <li><a href="https://justfewtuts.blogspot.com/">Just Few Tuts</a></li>
+                      <li><a href="https://hackersmag.blogspot.com/">Hacker's E-mag</a></li>
+                      <li><a href="https://tuxinstall.blogspot.com/">tux install *</a></li>
+                      <li><a href="https://technopast.blogspot.com/">Technology History</a></li>
+                      <li><a href="https://abionic.blogspot.com/">Reverse Bionic</a></li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>

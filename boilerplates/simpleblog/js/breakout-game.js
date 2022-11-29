@@ -5,6 +5,10 @@
 var gameCanvas = document.getElementById("gameOnCanvas");
 var gameCtx = gameCanvas.getContext("2d");
 
+var canvasWidth = document.getElementById("gameOnCanvasParent").clientWidth;
+gameCanvas.style.width = canvasWidth + "px";
+gameCanvas.style.height = "320px";
+
 var x = gameCanvas.width/2;
 var y = gameCanvas.height-30;
 var dx = 2;
@@ -36,15 +40,17 @@ var statusMsgColor = "#0095DD";
 
 var rightPressed = false;
 var leftPressed = false;
+var pauseTheWorld = false;
 
 function gameInit() {
-  canvasWidth = 640;
-  gameCanvas.style.width = canvasWidth + "px";
-  gameCanvas.style.height = "320px";
-
   document.addEventListener("keydown", keyDownHandler, false);
   document.addEventListener("keyup", keyUpHandler, false);
   document.addEventListener("mousemove", mouseMoveHandler, false);
+
+  gameCanvas.addEventListener('click', () => {
+   pauseTheWorld = !pauseTheWorld;
+   console.log("game is " + (pauseTheWorld ? "paused" : "running"));
+  });
 
   brickWidth = getBrickWidth();
 
@@ -52,18 +58,48 @@ function gameInit() {
 }
 
 function gameEnd(msg) {
+  clearInterval(interval);
+  sleep(1000).then(() => {gameReset(msg)});
+}
+
+function gameReset(msg) {
+  gameCtx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
+  drawBanner("new game starts in 3 seconds..")
+
+  sleep(1000).then(() => {gameCtx.clearRect(0, 0, gameCanvas.width, gameCanvas.height)});
+  drawBanner("new game starts in 2 seconds..")
+
+  sleep(1000).then(() => {gameCtx.clearRect(0, 0, gameCanvas.width, gameCanvas.height)});
+  drawBanner("new game starts in 1 seconds..")
+
+  sleep(1000).then(() => {gameCtx.clearRect(0, 0, gameCanvas.width, gameCanvas.height)});
   statusMsg = msg;
+
+  canvasWidth = document.getElementById("gameOnCanvasParent").clientWidth;
+  gameCanvas.style.width = canvasWidth + "px";
   brickWidth = getBrickWidth();
   bricksInit();
   x = gameCanvas.width/2;
   y = gameCanvas.height-30;
   paddleX = (gameCanvas.width - paddleWidth)/2;
   score = 0;
-  gameCtx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
+  interval = setInterval(draw, 10);
+}
+
+function drawBanner(msg) {
+  var text = gameCtx.measureText(msg);
+  gameCtx.strokeStyle = statusMsgColor;
+  gameCtx.strokeText(msg, ((gameCanvas.width/2)-(text.width/2)), (gameCanvas.height/2));
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 function getBrickWidth() {
-  return (canvasWidth - (brickColumnCount * brickPadding) - brickOffsetLeft) / brickColumnCount;
+  let brickPaddingWidth = brickColumnCount * brickPadding;
+  let nonBrickWidth = brickPaddingWidth + (2 * brickOffsetLeft);
+  return parseInt((canvasWidth - nonBrickWidth) / brickColumnCount);
 }
 
 function bricksInit() {
@@ -98,6 +134,9 @@ function keyUpHandler(e) {
   else if(e.key == "Left" || e.key == "ArrowLeft") {
     leftPressed = false;
   }
+  else if(e.key == " ") {
+    pauseTheWorld = !pauseTheWorld;
+  }
 }
 
 function keyHandler() {
@@ -119,6 +158,8 @@ function mouseMoveHandler(e) {
   var gameArea = gameCanvas.getBoundingClientRect();
   if(e.clientY < gameArea.top || e.clientY > gameArea.bottom) {
     return;
+  } else if(e.clientX < gameArea.left || e.clientX > gameArea.right) {
+    return;
   }
   var relativeX = e.clientX - gameCanvas.offsetLeft;
   if(relativeX > 0 && relativeX < gameCanvas.width) {
@@ -135,7 +176,7 @@ function drawBall() {
 }
 
 function bounceTheBall() {
-  if((x + dx) > (gameCanvas.width - ballRadius) || ((x + dx) < ballRadius)){
+  if((x + dx + 2) > (gameCanvas.width - ballRadius) || ((x + dx + 2) < ballRadius)){
     dx = -dx;
   }
   if((y + dy) > (gameCanvas.height - ballRadius)) {
@@ -219,10 +260,13 @@ function collisionDetection() {
 function drawScore() {
   gameCtx.font = "12px Arial";
   gameCtx.fillStyle = scoreColor;
-  gameCtx.fillText("Score: "+score, 12, 20);
+  gameCtx.fillText("Score: "+score+" | Click to Play/Pause", 12, 20);
 }
 
 function draw() {
+  if (pauseTheWorld == true) {
+    return;
+  }
   gameCtx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
   drawScore();
   drawStatus();
