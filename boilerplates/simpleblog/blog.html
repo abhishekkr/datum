@@ -44,20 +44,20 @@
       <div class="mui-card card-wide xm-shadow">
         <div class="mui-row">
           <div class="mui-col-sm-10 mui-col-sm-offset-1">
-            <div class="wip">web.logs </div>
+            <div class="wip">web.logs</div>
             <div class="mui-divider"></div>
             <br>
+            <div id="blogmenu">
+              <span class="blogbackbtn">
+                <a href="#"
+                  class="button radius small"
+                  onClick="toggleBlogContentToList();"
+                  onkeypress="toggleBlogContentToList();">
+                  back to blog-list
+                </a>
+              <span>
+            </div>
             <div class="mui--text-dark-secondary mui--text-body2">
-              <div id="blogmenu">
-                <span class="blogbackbtn">
-                  <a href="#"
-                    class="button radius small"
-                    onClick="toggleBlogContentToList();"
-                    onkeypress="toggleBlogContentToList();">
-                    back to blog-list
-                  </a>
-                <span>
-              </div>
               <div id="bloglist">
                 <template id="bloglistTmpl">
                   <div class="blogitem">
@@ -91,10 +91,6 @@
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-    <script src="/js/list.min.js"></script>
-    <script src="/js/list.pagination.js"></script>
-    <script src="/js/list.fuzzysearch.js"></script>
-
     <script src="/js/bloglist.js"></script>
     <script src="/js/simpleblog.js"></script>
     <link href="/css/simpleblog.css" rel="stylesheet" type="text/css" />

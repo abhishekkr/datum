@@ -1,15 +1,32 @@
 /*
 author: AbhishekKr
-occasional javascript artisen, comments/suggestions encouraged
+am an occasional javascript artisen, comments/suggestions encouraged
 */
 
-const blogListHash = "list";
+/* globals */
+
+const blogListHash = "";
 
 const $DOM = function(a,b){var c=document.querySelectorAll(a);if(b===undefined){b=0}return c[b]}
 const loadURI = function(a){var b=new XMLHttpRequest();b.open("GET",a,false);b.send();return b.responseText}
 
+const BLOG_DOMAIN = window.location.origin;
+const CURRENT_URL = window.location.href;
+const wwwDataParentUrl = CURRENT_URL.split('#')[0];
 
-function toggleBlogContentToList(){
+var BLOG_MENU = document.getElementById("blogmenu");
+
+const datumJsonFile =  "./datum.json";
+
+
+/* helper functions */
+
+const blogTokenFromHash = function(){
+  return document.location.hash.replace(/^#/, '');
+}
+
+
+const toggleBlogContentToList = function(){
   document.location.hash = blogListHash;
   $DOM("#blogcontent").style.display = "none";
   $DOM("#bloglist").style.display = "block";
@@ -89,15 +106,7 @@ const loadDatumJSON = function(jsonfile) {
 }
 
 
-/****************/
-
-const BLOG_DOMAIN = window.location.origin;
-const CURRENT_URL = window.location.href;
-const wwwDataParentUrl = CURRENT_URL.split('#')[0];
-
-var BLOG_MENU = document.getElementById("blogmenu");
-
-const datumJsonFile =  "./datum.json";
+/************   __main__     **********/
 loadDatumJSON(datumJsonFile);
 
 /* tooltip to all titles in list */
@@ -111,9 +120,20 @@ $('*').filter(function() {
 });
 */
 
-var blog_hash = document.location.hash.replace(/^#/, '');
+/* capture hash link with blog-url to render required blog */
+var blog_hash = blogTokenFromHash();
 if (blog_hash != "" && blog_hash != blogListHash) {
   var blog_url = decodeURIComponent(blogLinkFromHash(blog_hash));
   console.log("Direct Blog Link:", blog_url, blog_hash);
   toggleBlogListToContent(blog_url);
 }
+
+/* adjust list/content on page after a hash change */
+window.addEventListener('hashchange', function() {
+    var blogHash = blogTokenFromHash();
+    if (blogHash.length > 0){
+      toggleBlogListToContent(blogHash);
+    } else {
+      toggleBlogContentToList();
+    }
+}, false);
