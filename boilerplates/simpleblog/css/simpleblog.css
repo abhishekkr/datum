@@ -156,3 +156,20 @@ footer {
 audio {
   width: 280px;
 }
+
+.blogFile, .blogURL {
+  display: none;
+}
+
+#blogmenu {
+  display: none;
+}
+
+#blogcontent {
+  display: none;
+}
+
+.blogbackbtn {
+  font-style: italic;
+  text-align: right;
+}

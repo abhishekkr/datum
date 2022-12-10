@@ -44,22 +44,40 @@
       <div class="mui-card card-wide xm-shadow">
         <div class="mui-row">
           <div class="mui-col-sm-10 mui-col-sm-offset-1">
-            <br>
-            <br>
-            <div class="mui--text-dark-secondary mui--text-body2">PINNED POST</div>
+            <div class="wip">web.logs </div>
             <div class="mui-divider"></div>
             <br>
-            <!-- blog goes here --><div class="wip">the pen is out of ink, my mug got no swill<br/>moving older blogs here and new, soon I will</div>
+            <div class="mui--text-dark-secondary mui--text-body2">
+              <div id="blogmenu">
+                <span class="blogbackbtn">
+                  <a href="#"
+                    class="button radius small"
+                    onClick="toggleBlogContentToList();"
+                    onkeypress="toggleBlogContentToList();">
+                    back to blog-list
+                  </a>
+                <span>
+              </div>
+              <div id="bloglist">
+                <template id="bloglistTmpl">
+                  <div class="blogitem">
+                    <article>
+                      <h3>
+                        <a class="blogTitle" href="javascript:void(0)" onClick="openBlog(this);" onkeypress="openBlog(this);"></a>
+                        <span class="blogFile"></span>
+                        <span class="blogURL"></span>
+                      </h3>
+                      <div class="blogDate"></div>
+                      <h4><small class="blogTags"></small></h4>
+                    </article>
+                  </div>
+                </template>
+              </div>
+            </div>
             <br>
-            <br>
-            <div class="mui--text-dark-secondary mui--text-body2">RECENT POSTS</div>
+            <!-- blog goes here -->
+            <div id="blogcontent"></div>
             <div class="mui-divider"></div>
-            <br>
-            <!-- blog goes here -->
-            <br>
-            <br>
-            <!-- blog goes here -->
-              <div id="blogcontent"></div>
           </div>
         </div>
       </div>
@@ -72,6 +90,12 @@
       <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Nerko+One&family=Pacifico&display=swap" rel="stylesheet">
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="/js/list.min.js"></script>
+    <script src="/js/list.pagination.js"></script>
+    <script src="/js/list.fuzzysearch.js"></script>
+
+    <script src="/js/bloglist.js"></script>
     <script src="/js/simpleblog.js"></script>
     <link href="/css/simpleblog.css" rel="stylesheet" type="text/css" />
   </body>
