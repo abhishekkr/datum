@@ -8,7 +8,6 @@ am an occasional javascript artisen, comments/suggestions encouraged
 const blogListHash = "";
 
 const $DOM = function(a,b){var c=document.querySelectorAll(a);if(b===undefined){b=0}return c[b]}
-const loadURI = function(a){var b=new XMLHttpRequest();b.open("GET",a,false);b.send();return b.responseText}
 
 const BLOG_DOMAIN = window.location.origin;
 const CURRENT_URL = window.location.href;
@@ -43,22 +42,57 @@ function blogLinkFromHash(blog_hash){
   return BLOG_DOMAIN + blog_hash;
 }
 
-function toggleBlogListToContent(blog_url){
-  var blog_link = window.location.href.split('#')[0] + "#" + encodeURIComponent(blog_url);
-  console.log(blog_url);
-  console.log(blog_link);
 
-  document.location.hash = blogHashFromLink(blog_url);
-  var blogContent = loadURI(blog_url);
-  if (undefined != blogContent){
-    console.log(blogcontent);
-    $DOM("#blogcontent").innerHTML = blogContent;
-    $DOM("#blogcontent").style.display = "block";
-    $DOM("#bloglist").style.display = "none";
-    BLOG_MENU.style.display = "block";
+const markdownToHTML = function(mduri) {
+  var ihtml = undefined;
+  fetch(mduri)
+    .then((response) => response.text())
+    .then((data) => {
+      var converter = new showdown.converter({
+          emoji: true,
+          underline: true,
+        });
+      return converter.makehtml(data);
+    });
+}
+
+const urlBody = function(uri, isMD=false){
+  var iHTML = undefined;
+  var x = new XMLHttpRequest();
+  x.open("GET", uri, false);
+  x.send();
+  x.onerror = function(){
+    console.log("failed to get ", uri);
+  }
+  var data = x.responseText
+  if (isMD) {
+    var converter = new showdown.Converter({
+        emoji: true,
+        underline: true,
+      });
+    iHTML = converter.makeHtml(data);
+  } else {
+    iHTML = data;
+  }
+  return iHTML;
+}
+
+
+function toggleBlogListToContent(blogURL){
+  var blog_link = window.location.href.split('#')[0] + "#" + encodeURIComponent(blogURL);
+  document.location.hash = blogHashFromLink(blogURL);
+
+  const isMD = (blogURL.split('.').pop().trim() == "md")
+  var blogContent = urlBody(blogURL, isMD);
+  if (undefined == blogContent){
+    blogContent = "<div class=\"wip\"><p>HTTP 404</p>The page you are looking for is not found.</div>";
   } else {
     console.log("ERROR: Cannot browse link for this blog.");
   }
+  $DOM("#blogcontent").innerHTML = blogContent;
+  $DOM("#blogcontent").style.display = "block";
+  $DOM("#bloglist").style.display = "none";
+  BLOG_MENU.style.display = "block";
 }
 
 
