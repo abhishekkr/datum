@@ -1,16 +1,16 @@
-/* manages markdown render to html */
+/* manages blog specific tweaks */
 
-const renderMarkdown = function(mduri) {
-  var blogcontent = document.getElementById('blogcontent');
-  var ihtml = undefined;
-
-  fetch(mduri)
-    .then((response) => response.text())
-    .then((data) => {
-      var converter = new showdown.Converter({
-          emoji: true,
-          underline: true,
-        });
-      blogcontent.innerHTML = converter.makeHtml(data);
-    });
+const styleCodeBlocks = function() {
+  var blogContentNode = window.document.getElementById('blogcontent');
+  blogContentNode.querySelectorAll('code').forEach(
+    function(codeBlock) {
+      if (/\r|\n/.exec(codeBlock.innerText)) {
+        codeBlock.classList.add("multiline-code");
+      } else {
+        codeBlock.classList.add("oneline-code");
+      }
+    }
+  );
 }
+
+styleCodeBlocks();

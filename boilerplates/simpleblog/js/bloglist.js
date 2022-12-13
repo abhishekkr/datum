@@ -93,6 +93,7 @@ function toggleBlogListToContent(blogURL){
   $DOM("#blogcontent").style.display = "block";
   $DOM("#bloglist").style.display = "none";
   BLOG_MENU.style.display = "block";
+  styleCodeBlocks();
 }
 
 

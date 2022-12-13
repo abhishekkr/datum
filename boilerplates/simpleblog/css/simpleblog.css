@@ -173,3 +173,39 @@ audio {
   font-style: italic;
   text-align: right;
 }
+
+/* for showdown converted md-to-html */
+#blogcontent blockquote {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  padding-left: 10px;
+  border-left: 5px solid #b9efda;
+  display: block;
+}
+
+#blogcontent .multiline-code {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  padding-right: 5px;
+  padding-left: 15px;
+  border-left: 5px solid #b9efda;
+  color: #ffffff;
+  background-color: #135e9b;
+  font-weight: bold;
+  display: block;
+  word-wrap: break-word;
+}
+#blogcontent .oneline-code {
+  margin-top: 1px;
+  margin-bottom: 1px;
+  margin-left: 5px;
+  padding-left: 4px;
+  padding-right: 5px;
+  border-left: 3px solid #646464;
+  color: #000000;
+  background-color: #c9c9c9;
+  word-wrap: break-word;
+  white-space: initial;
+}
